@@ -12,6 +12,7 @@ import Login from './Pages/Login.jsx';
 import Register from './Pages/Register.jsx';
 import AdProjects from './Pages/AdProject/AdProjects.jsx';
 import AuthProvider from './Provider/AuthProvider.jsx';
+import AllProject from './Pages/AllProject.jsx';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
       {
         path: '/addproject',
         element: <AdProjects></AdProjects>
+      },
+      {
+        path: '/allproject',
+        element: <AllProject></AllProject>
       },
     
     
