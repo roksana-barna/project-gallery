@@ -1,28 +1,40 @@
 import React, { useState } from 'react';
 
 const AdProject = () => {
-  const [projectImage, setProjectImage] = useState(null);
-  const [projectName, setProjectName] = useState('');
-  const [usedTechnology, setUsedTechnology] = useState('');
-  const [projectDetails, setProjectDetails] = useState('');
-  const [liveLink, setLiveLink] = useState('');
-  const [clientSideLink, setClientSideLink] = useState('');
-  const [serverSideLink, setServerSideLink] = useState('');
-
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    // Perform actions with the form data, such as sending it to a server or saving it to a database.
+    const form = event.target;
+    const projectImage = form.projectImage.value;
+    const projectName = form.projectName.value;
+    const usedTechnology = form.usedTechnology.value;
+    const projectDetails = form.projectDetails.value;
+    const liveLink = form.liveLink.value;
+    const clientSideLink= form.clientSideLink.value;
+    const serverSideLink= form.serverSideLink.value;
 
-    // Clear the form fields after submission (optional)
-    setProjectImage(null);
-    setProjectName('');
-    setUsedTechnology('');
-    setProjectDetails('');
-    setLiveLink('');
-    setClientSideLink('');
-    setServerSideLink('');
-  };
+
+    const projects = { projectImage, projectName,usedTechnology,projectDetails, liveLink,clientSideLink,serverSideLink};
+    console.log(projects);
+    form.reset();
+    fetch('https://university-project-hub.vercel.app/projects', {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify(projects)
+
+    })
+      .then(res => res.json())
+      .then(data => {
+        console.log(data)
+        if (data.insertedId) {
+          alert('added this projects successfully')
+        }
+      })
+
+  }
+ 
 
   return (
     <form onSubmit={handleSubmit} className="max-w-lg mx-auto mt-8 p-6 bg-white rounded shadow-md">
@@ -34,10 +46,10 @@ const AdProject = () => {
         </label>
         <input
           type="file"
+          name="projectImage"
           id="projectImage"
           accept="image/*"
           className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
-          onChange={(e) => setProjectImage(e.target.files[0])}
         />
       </div>
 
@@ -47,9 +59,9 @@ const AdProject = () => {
         </label>
         <input
           type="text"
+
           id="projectName"
-          value={projectName}
-          onChange={(e) => setProjectName(e.target.value)}
+          name="projectName"
           className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
           required
         />
@@ -62,8 +74,9 @@ const AdProject = () => {
         <input
           type="text"
           id="usedTechnology"
-          value={usedTechnology}
-          onChange={(e) => setUsedTechnology(e.target.value)}
+          name="usedTechnology"
+
+          
           className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
           required
         />
@@ -75,8 +88,8 @@ const AdProject = () => {
         </label>
         <textarea
           id="projectDetails"
-          value={projectDetails}
-          onChange={(e) => setProjectDetails(e.target.value)}
+          name="projectDetails"
+
           rows="6"
           className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
           required
@@ -90,8 +103,9 @@ const AdProject = () => {
         <input
           type="url"
           id="liveLink"
-          value={liveLink}
-          onChange={(e) => setLiveLink(e.target.value)}
+          name="liveLink"
+
+        
           className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
           required
         />
@@ -104,8 +118,9 @@ const AdProject = () => {
         <input
           type="url"
           id="clientSideLink"
-          value={clientSideLink}
-          onChange={(e) => setClientSideLink(e.target.value)}
+          name="clientSideLink"
+
+         
           className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
           required
         />
@@ -118,8 +133,9 @@ const AdProject = () => {
         <input
           type="url"
           id="serverSideLink"
-          value={serverSideLink}
-          onChange={(e) => setServerSideLink(e.target.value)}
+          name="serverSideLink"
+
+         
           className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
           required
         />

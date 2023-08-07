@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import Swal from 'sweetalert2';
 import img from '../assets/registration-hand-pressing-button-interface-blue-background-49410297.webp'
 // import SocialLogin from '../../Shared/SocialLogin/SocialLogin';
+
 import { AuthContext } from '../Provider/AuthProvider';
 const Register = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm({
@@ -11,7 +12,7 @@ const Register = () => {
             role:'student'
         }
     });
-    const { createUser} = useContext(AuthContext);
+    const { createUser,updateUserProfile} = useContext(AuthContext);
     const navigate = useNavigate();
     const onSubmit = data => {
 
@@ -21,32 +22,32 @@ const Register = () => {
                 const loggedUser = result.user;
                 console.log(loggedUser);
 
-                // updateUserProfile(data.name, data.photoURL)
-                //     .then(() => {
-                //         const saveUser = { name: data.name, email: data.email,number:data.number,photoURL:data.photoURL,role:'student' }
-                //         fetch('https://b7a12-summer-camp-server-side-roksana-barna.vercel.app/users', {
-                //             method: 'POST',
-                //             headers: {
-                //                 'content-type': 'application/json'
-                //             },
-                //             body: JSON.stringify(saveUser)
-                //         })
-                    //         .then(res => res.json())
-                    //         .then(data => {
-                    //             if (data.insertedId) {
-                    //                 reset();
-                    //                 Swal.fire({
-                    //                     position: 'top-end',
-                    //                     icon: 'success',
-                    //                     title: 'User created successfully.',
-                    //                     showConfirmButton: false,
-                    //                     timer: 1500
-                    //                 });
+                updateUserProfile(data.name, data.photoURL)
+                    .then(() => {
+                        const saveUser = { name: data.name, email: data.email,registration:data.number,photoURL:data.photoURL,role:'student' }
+                        fetch('https://university-project-hub.vercel.app/login', {
+                            method: 'POST',
+                            headers: {
+                                'content-type': 'application/json'
+                            },
+                            body: JSON.stringify(saveUser)
+                        })
+                            .then(res => res.json())
+                            .then(data => {
+                                if (data.insertedId) {
+                                    reset();
+                                    Swal.fire({
+                                        position: 'top-end',
+                                        icon: 'success',
+                                        title: 'login successfully.',
+                                        showConfirmButton: false,
+                                        timer: 1500
+                                    });
                                     navigate('/');
-                    //             }
-                    //         })
-                    // })
-                    // .catch(error => console.log(error))
+                                }
+                            })
+                    })
+                    .catch(error => console.log(error))
             })
     };
 
@@ -70,7 +71,7 @@ const Register = () => {
                                 <label className="label">
                                     <span className="label-text">Registration Number</span>
                                 </label>
-                                <input type="number"  {...register("number", { required: true })} name="number" placeholder="number" className="input input-bordered" />
+                                <input type="number"  {...register("registration", { required: true })} name="registration" placeholder="registration" className="input input-bordered" />
                                 {errors.number&& <span className="text-red-600">Registration number is required</span>}
                             </div>
                             <div className="form-control">

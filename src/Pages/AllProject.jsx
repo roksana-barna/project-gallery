@@ -1,42 +1,59 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import StarRating from '../Home/StarRating';
+import React, { useEffect, useState } from 'react';
+// import StarRating from '../Home/StarRating';
+// import { Link } from 'react-router-dom';
+import AllProjectCard from '../Components/AllProjectCard';
 
 
 const AllProject = () => {
+    const [allProjects, setAllProjects] = useState([]);
+    const [isSearched, setIsSearched] = useState(false);
+    console.log(allProjects)
+    useEffect(() => {
+        fetch(`https://university-project-hub.vercel.app/projects`)
+            .then(res => res.json())
+            .then(data => setAllProjects(data))
+    }, [isSearched])
+
+
+    const handleSearch = (e) => {
+        e.preventDefault();
+        const form = e.target;
+        const text = form.search.value;
+        console.log(text);
+        if (text) {
+            fetch(`https://university-project-hub.vercel.app/projectNameSearch/${text}`)
+                .then((res) => res.json())
+                .then((data) => {
+                    console.log(data);
+                    setAllProjects(data);
+                });
+        } else {
+            setIsSearched(!isSearched);
+        }
+    };
+
     return (
         <div>
-                    <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 ml-6 '>
+            <div>
+                <h2 className='text-xl text-blue-950  uppercase text-center font-bold my-6' >All Projects</h2>
+                <form onSubmit={handleSearch} className='text-center p-5'>
+                    <input type='text' placeholder='Project name' name='search'
 
+                        className=' bg-transparent border-2 rounded p-1 w-72 pl-2' />
+                    <button type='submit' className='bg-blue-900 p-2 rounded-lg text-white' >Search</button>
+                </form>
+            </div>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 ml-6 '>
+                {
 
-                    <div className="card w-96 bg-indigo-950 shadow-xl mb-12">
-                    <figure><img className='rounded-xl h-52' src='' alt="Shoes" /></figure>
-                    <div className="card-body">
-                    <StarRating></StarRating>
-                        <h2 className="card-title text-white">
-                            BABY PUpUs
-                        </h2>
-                        <div className='grid grid-cols-1 md:grid-cols-3'>
-                            <div className="badge badge-error text-white mt-1">React js</div>
-                            <div className="badge badge-error text-white mt-1">TailwindCSS</div>
-                            <div className="badge badge-error text-white mt-1">Express.js</div>
-                            <div className="badge badge-error text-white mt-1">MongoDB</div>
-                            <div className="badge badge-error text-white mt-1">Firebase </div>
+                    allProjects?.map(project => <AllProjectCard
+                        key={project._id}
+                        project={project}
 
-                        </div>
-                        <div className="badge badge-primary text-white mt-1">Details </div>
+                    ></AllProjectCard>)
+                        }
+               
 
-                        <p className='text-white'>Create an intuitive and visually appealing website interface that allows users to easily browse, search,
-                            and navigate through a wide range of toys.
-                            Build trust with customers by prominently displaying trust seals, privacy policies.
-                             build trust and confidence among potential customers.</p>
-                        <div className="card-actions justify-end">
-                            <div className="badge badge-info text-white mt-1"><Link to='https://toy-marketplace-client-s-fa9ff.web.app/'>Live Site</Link></div>
-                            <div className="badge badge-info text-white mt-1"><Link to='https://github.com/roksana-barna/b7a11-toy-marketplace-client-side'>Code</Link></div>
-
-                        </div>
-                    </div>
-                    </div>
             </div>
         </div>
     );
