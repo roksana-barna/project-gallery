@@ -14,6 +14,7 @@ import AdProjects from './Pages/AdProject/AdProjects.jsx';
 import AuthProvider from './Provider/AuthProvider.jsx';
 import AllProject from './Pages/AllProject.jsx';
 import AboutPage from './Pages/AboutPage.jsx';
+import Dashboard from './Layout/Dashboard.jsx';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -48,8 +49,19 @@ const router = createBrowserRouter([
     
     
   ]
+},
+  {
+    path: 'dashboard',
+    element: <Dashboard></Dashboard>,
+    children: [
+      // {
+      //   path: 'manageclass',
+      //   element:<AdminRoute> <ManageClass></ManageClass></AdminRoute>
+      // }
+    ]
+    }
 
-  }
+
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
