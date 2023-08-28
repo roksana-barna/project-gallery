@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Tech = () => {
+const Manageproject = () => {
     return (
         <div>
             
@@ -8,4 +8,4 @@ const Tech = () => {
     );
 };
 
-export default Tech;
+export default Manageproject;

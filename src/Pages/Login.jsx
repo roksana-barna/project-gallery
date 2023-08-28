@@ -2,10 +2,10 @@ import React, { useContext, useState } from 'react';
 import { useForm } from "react-hook-form";
 import Swal from 'sweetalert2';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-// import SocialLogin from '../../Shared/SocialLogin/SocialLogin';
 import img from '../assets/istockphoto-1254050848-612x612.jpg'
 import { FaEyeSlash, FaRegEye } from 'react-icons/fa';
 import { AuthContext } from '../Provider/AuthProvider';
+import SocialLogin from '../Shared/SocialLogin';
 
 
 const Login = () => {
@@ -32,7 +32,6 @@ const Login = () => {
                     timer: 1500
                 });
                 navigate(from, { replace: true });
-
 
             })
     }
@@ -77,12 +76,12 @@ const Login = () => {
 
                             </div>
 
-                            <div className="form-control mt-6">
+                            <div className="form-control mt-4">
                                 <input className="btn bg-fuchsia-600 text-white" type="submit" value="Login" />
                             </div>
-                            {/* <SocialLogin></SocialLogin> */}
+                            <SocialLogin></SocialLogin>
                         </form>
-                        <p className='mb-6'><small className='text-blue-900 pl-8'>New to Project Gallery??Please <button className='bg-fuchsia-500 text-white px-4 py-1 rounded-2xl'><Link to="/register">Register</Link></button></small></p>
+                        <p className='mb-4'><small className='text-blue-900 pl-8'>New to Project Gallery??Please <button className='bg-fuchsia-500 text-white px-4 py-1 rounded-2xl'><Link to="/register">Register</Link></button></small></p>
                     </div>
                 </div>
             </div>

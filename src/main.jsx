@@ -14,7 +14,15 @@ import AdProjects from './Pages/AdProject/AdProjects.jsx';
 import AuthProvider from './Provider/AuthProvider.jsx';
 import AllProject from './Pages/AllProject.jsx';
 import AboutPage from './Pages/AboutPage.jsx';
-import Dashboard from './Layout/Dashboard.jsx';
+
+import {
+  QueryClient,
+QueryClientProvider,
+} from '@tanstack/react-query'
+import Manageproject from './Layout/Dashboard/AdminDashboard/Manageproject.jsx';
+import Managestudent from './Layout/Dashboard/AdminDashboard/Managestudent.jsx';
+import Dashboard from './Layout/Dashboard/Dashboard.jsx';
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -54,21 +62,30 @@ const router = createBrowserRouter([
     path: 'dashboard',
     element: <Dashboard></Dashboard>,
     children: [
-      // {
-      //   path: 'manageclass',
-      //   element:<AdminRoute> <ManageClass></ManageClass></AdminRoute>
-      // }
+      {
+        path: 'manageproject',
+        element:<Manageproject></Manageproject>
+      },
+      {
+        path: 'managestudent',
+        element:<Managestudent></Managestudent>
+      },
+
     ]
     }
 
 
 ]);
-
+const queryClient = new QueryClient()
 ReactDOM.createRoot(document.getElementById('root')).render(
   <div className='max-w-7xl mx-auto'>
     <React.StrictMode>
       <AuthProvider>
+      <QueryClientProvider client={queryClient}>
+
       <RouterProvider router={router} />
+      </QueryClientProvider>
+
       </AuthProvider>
   </React.StrictMode>,
   </div>

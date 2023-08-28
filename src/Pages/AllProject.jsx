@@ -35,7 +35,7 @@ const AllProject = () => {
     return (
         <div>
             <div>
-                <h2 className='text-xl text-blue-950  uppercase text-center font-bold my-6' >All Projects</h2>
+                <h2 className='text-xl text-blue-950  uppercase text-center font-bold my-6 mt-10' >All Projects</h2>
                 <form onSubmit={handleSearch} className='text-center p-5'>
                     <input type='text' placeholder='Project name' name='search'
 
