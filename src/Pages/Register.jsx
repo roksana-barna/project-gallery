@@ -25,7 +25,7 @@ const Register = () => {
                 updateUserProfile(data.name, data.photoURL)
                     .then(() => {
                         const saveUser = { name: data.name, email: data.email,registration:data.number,photoURL:data.photoURL,role:'student' }
-                        fetch('https://university-project-hub.vercel.app/login', {
+                        fetch('https://project-gallery-server.vercel.app/users', {
                             method: 'POST',
                             headers: {
                                 'content-type': 'application/json'

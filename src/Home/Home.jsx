@@ -1,7 +1,6 @@
 import React from 'react';
 import Banner1 from './Banner1';
 import ProjectsCard from './ProjectsCard';
-
 const Home = () => {
     return (
         <div>

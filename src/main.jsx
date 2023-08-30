@@ -12,7 +12,6 @@ import Login from './Pages/Login.jsx';
 import Register from './Pages/Register.jsx';
 import AdProjects from './Pages/AdProject/AdProjects.jsx';
 import AuthProvider from './Provider/AuthProvider.jsx';
-import AllProject from './Pages/AllProject.jsx';
 import AboutPage from './Pages/AboutPage.jsx';
 
 import {
@@ -22,6 +21,9 @@ QueryClientProvider,
 import Manageproject from './Layout/Dashboard/AdminDashboard/Manageproject.jsx';
 import Managestudent from './Layout/Dashboard/AdminDashboard/Managestudent.jsx';
 import Dashboard from './Layout/Dashboard/Dashboard.jsx';
+import AppoveProject from './Pages/ApproveProject.jsx';
+import ViewDetails from './Components/ViewDetails/ViewDetails.jsx';
+import Update from './Components/Update/Update.jsx';
 
 const router = createBrowserRouter([
   {
@@ -47,12 +49,23 @@ const router = createBrowserRouter([
         element: <AdProjects></AdProjects>
       },
       {
-        path: '/allproject',
-        element: <AllProject></AllProject>
+        path: '/approveproject',
+        element: <AppoveProject></AppoveProject>
       },
       {
         path: '/about',
         element: <AboutPage></AboutPage>
+      },
+      {
+        path: "/update/:id",
+        element: <Update></Update>,
+        loader: ({ params }) => fetch(`https://project-gallery-server.vercel.app/update/${params.id}`)
+      },
+      {
+        path: "/viewdetails/:id",
+        element:<ViewDetails></ViewDetails>,
+        loader: ({ params }) => fetch(`https://project-gallery-server.vercel.app/viewdetails/${params.id}`)
+
       },
     
     

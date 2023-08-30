@@ -41,7 +41,7 @@ useEffect(() => {
         console.log('current user', currentUser);
         // for token use
         if(currentUser){
-            axios.post('https://university-project-hub.vercel.app/jwt', {email: currentUser.email})
+            axios.post('https://project-gallery-server.vercel.app/jwt', {email: currentUser.email})
             .then(data =>{
                 localStorage.setItem('access-token', data.data.token)
                 setLoading(false);

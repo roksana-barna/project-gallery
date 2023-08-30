@@ -17,7 +17,7 @@ const Navbar = () => {
                 className='text-orange-300 md:text-white text-base  bg-transparent'
 
             >Home</NavLink></li>
-            <li><NavLink to='/allproject' className='text-orange-300 text-base md:text-white  bg-transparent'
+            <li><NavLink to='/approveproject' className='text-orange-300 text-base md:text-white  bg-transparent'
 
             >Projects</NavLink></li>
             <li><NavLink to='/about' className='text-orange-300 md:text-white text-base bg-transparent'

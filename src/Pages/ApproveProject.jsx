@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from 'react';
 // import StarRating from '../Home/StarRating';
 // import { Link } from 'react-router-dom';
-import AllProjectCard from '../Components/AllProjectCard';
+import ApproveProjectCard from '../Components/ApproveProjectCard';
 
 
-const AllProject = () => {
-    const [allProjects, setAllProjects] = useState([]);
+
+const AppoveProject = () => {
+    const [approvedProjects, setApprovedProjects] = useState([]);
     const [isSearched, setIsSearched] = useState(false);
-    console.log(allProjects)
+    console.log(approvedProjects)
     useEffect(() => {
-        fetch(`https://university-project-hub.vercel.app/projects`)
+        fetch('https://project-gallery-server.vercel.app/project')
             .then(res => res.json())
-            .then(data => setAllProjects(data))
+            .then(data => setApprovedProjects(data))
     }, [isSearched])
 
 
@@ -21,11 +22,11 @@ const AllProject = () => {
         const text = form.search.value;
         console.log(text);
         if (text) {
-            fetch(`https://university-project-hub.vercel.app/projectNameSearch/${text}`)
+            fetch(`https://project-gallery-server.vercel.app/projectNameSearch/${text}`)
                 .then((res) => res.json())
                 .then((data) => {
                     console.log(data);
-                    setAllProjects(data);
+                    setApprovedProjects(data);
                 });
         } else {
             setIsSearched(!isSearched);
@@ -46,17 +47,22 @@ const AllProject = () => {
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 ml-6 '>
                 {
 
-                    allProjects?.map(project => <AllProjectCard
+                    approvedProjects?.map(project => <ApproveProjectCard
                         key={project._id}
                         project={project}
 
-                    ></AllProjectCard>)
-                        }
-               
+                    ></ApproveProjectCard>)
+
+                }
+
+
+            </div>
+            <div className='text-center'>
+                <button className='bg-pink-700 rounded-xl px-3 font-bold py-2  mb-4 text-white'>Show More</button>
 
             </div>
         </div>
     );
 };
 
-export default AllProject;
+export default AppoveProject;

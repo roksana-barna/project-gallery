@@ -17,7 +17,7 @@ const AdProject = () => {
     const projects = { projectImage, projectName,usedTechnology,projectDetails, liveLink,clientSideLink,serverSideLink};
     console.log(projects);
     form.reset();
-    fetch('https://university-project-hub.vercel.app/projects', {
+    fetch('https://project-gallery-server.vercel.app/projects', {
       method: 'POST',
       headers: {
         'content-type': 'application/json'
@@ -45,13 +45,16 @@ const AdProject = () => {
           Project Image:
         </label>
         <input
-          type="file"
+          type="text"
           name="projectImage"
           id="projectImage"
-          accept="image/*"
           className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
         />
-      </div>
+      </div> 
+      {/* <div className="mb-4">
+            <label htmlFor="projectImage" className="block  text-sm font-bold ">Picture URL of the Project:</label>
+            <input type="url" id="projectImage " name="projectImage " className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200"  required/>
+          </div> */}
 
       <div className="mb-4">
         <label htmlFor="projectName" className="block mb-2 text-sm font-bold text-gray-700">

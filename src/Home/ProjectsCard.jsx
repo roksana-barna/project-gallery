@@ -34,8 +34,7 @@ const ProjectsCard = () => {
                         <p className='text-white'>Create an intuitive and visually appealing website interface that allows users to easily browse, search,
                             and navigate through a wide range of toys.
                             Build trust with customers by prominently displaying trust seals, privacy policies.
-                            Implement clear categories, filters, and sorting options to help users find their desired toys quickly and
-                            efficiently. build trust and confidence among potential customers.</p>
+                             build trust and confidence among potential customers.</p>
                         <div className="card-actions justify-end">
                             <div className="badge badge-info text-white mt-1"><Link to='https://toy-marketplace-client-s-fa9ff.web.app/'>Live Site</Link></div>
                             <div className="badge badge-info text-white mt-1"><Link to='https://github.com/roksana-barna/b7a11-toy-marketplace-client-side'>Code</Link></div>
@@ -62,9 +61,8 @@ const ProjectsCard = () => {
                         <p className='text-white'>Showcase the rich and diverse world of Japanese cuisine by featuring traditional and authentic recipes,
                             ingredients, and cooking techniques.
                             Display a gallery of visually stunning images that capture the artistry and presentation of the chef's
-                            culinary creations. Highlight the unique flavors.
-                            Share exclusive and signature recipes from famous Japanese chefs, showcasing their distinctive culinary
-                            creations. Include detailed step-by-step.</p>
+                            culinary creations.
+                            Include detailed step-by-step.</p>
                         <div className="card-actions justify-end">
                             <div className="badge badge-info text-white mt-1"><Link to='https://chef-recipe-hunter-clien-a7147.web.app/'>Live Site</Link></div>
                             <div className="badge badge-info text-white mt-1"><Link to='https://github.com/roksana-barna/chef-recipe-hunter-client-side'>Code</Link></div>
@@ -94,8 +92,7 @@ const ProjectsCard = () => {
                         <div className="badge badge-primary text-white mt-1">Details </div>
                         <p className='text-white'>Highlight the most popular or highly recommended dance classes offered by the school. Provide a
                             seamless payment process for users to enroll in these classes directly from the website.
-                            Offer a section where users can view their payment history, including details of the classes they have paid
-                            for, payment dates,payemet history and transaction statuses.
+                           payment dates,payemet history and transaction statuses.
                             </p>
                         <div className="card-actions justify-end">
                             <div className="badge badge-info text-white mt-1"> <Link to='https://summer-camp-client-side-b9363.web.app/'>Live Site</Link></div>
