@@ -23,10 +23,14 @@ const Navbar = () => {
             <li><NavLink to='/about' className='text-orange-300 md:text-white text-base bg-transparent'
 
             >About</NavLink></li>
+
             {
                 user && <li><Link to="/dashboard" className='text-orange-300 text-base md:text-white  bg-transparent'>DashBoard</Link></li>
 
             }
+            <li><NavLink to='/campaign' className='text-orange-300 md:text-white text-base bg-transparent'
+
+            >Campaign</NavLink></li>
         </div>
     return (
         <div className=''>

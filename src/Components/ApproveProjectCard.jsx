@@ -8,7 +8,7 @@ const ApproveProjectCard = ({ project }) => {
     return (
         <div className=''>
             <div className="card w-96 h-[500px] shadow-xl mt-10 mb-12">
-                <figure><img className='rounded-xl w-96 h-56' src={projectImage} alt="image" /></figure>
+                <figure><img className='rounded-xl w-96 h-52' src={projectImage} alt="image" /></figure>
                 <div className="card-body ">
                     <StarRating></StarRating>
 

@@ -10,11 +10,13 @@ const AdProject = () => {
     const usedTechnology = form.usedTechnology.value;
     const projectDetails = form.projectDetails.value;
     const liveLink = form.liveLink.value;
+    const category = form.category.value;
+
     const clientSideLink= form.clientSideLink.value;
     const serverSideLink= form.serverSideLink.value;
 
 
-    const projects = { projectImage, projectName,usedTechnology,projectDetails, liveLink,clientSideLink,serverSideLink};
+    const projects = { projectImage,category, projectName,usedTechnology,projectDetails, liveLink,clientSideLink,serverSideLink};
     console.log(projects);
     form.reset();
     fetch('https://project-gallery-server.vercel.app/projects', {
@@ -94,6 +96,18 @@ const AdProject = () => {
           name="projectDetails"
 
           rows="6"
+          className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
+          required
+        />
+      </div>
+      <div className="mb-4">
+        <label htmlFor="category" className="block mb-2 text-sm font-bold text-gray-700">
+          Project Category:
+        </label>
+        <input
+          type="text"
+          id="category"
+          name="category"
           className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
           required
         />

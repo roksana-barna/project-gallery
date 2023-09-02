@@ -2,21 +2,14 @@ import React, { useEffect, useState } from 'react';
 // import { useQuery } from "@tanstack/react-query";
 
 import Swal from 'sweetalert2';
-// import useAxiosSecure from '../../../Components/Hooks/useAxiosSecure';
-
 const Managestudent = () => {
-    // const [axiosSecure] = useAxiosSecure();
-    // const { data: users = [], refetch } = useQuery(['users'], async () => {
-    //     const res = await axiosSecure.get('/login')
-    //     return res.data;
-    // })
+    
     const [users, setUsers] = useState([]);
     useEffect(() => {
         fetch('https://project-gallery-server.vercel.app/users')
             .then(res => res.json())
             .then(data => setUsers(data))
     },)
-
     const handleMakeAdmin = user => {
         fetch(`https://project-gallery-server.vercel.app/users/admin/${user._id}`, {
             method: 'PATCH'

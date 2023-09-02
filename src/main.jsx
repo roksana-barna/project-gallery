@@ -24,6 +24,9 @@ import Dashboard from './Layout/Dashboard/Dashboard.jsx';
 import AppoveProject from './Pages/ApproveProject.jsx';
 import ViewDetails from './Components/ViewDetails/ViewDetails.jsx';
 import Update from './Components/Update/Update.jsx';
+import Campaign from './Campaign/Campaign.jsx';
+import PrivateRoute from './Routes/PrivateRoute/PrivateRoute.jsx';
+import AdminRoutes from './Routes/AdminRoutes.jsx';
 
 const router = createBrowserRouter([
   {
@@ -47,6 +50,10 @@ const router = createBrowserRouter([
       {
         path: '/addproject',
         element: <AdProjects></AdProjects>
+      },
+      {
+        path: '/campaign',
+        element: <Campaign></Campaign>
       },
       {
         path: '/approveproject',
@@ -73,15 +80,15 @@ const router = createBrowserRouter([
 },
   {
     path: 'dashboard',
-    element: <Dashboard></Dashboard>,
+    element: <PrivateRoute><Dashboard></Dashboard>,</PrivateRoute>,
     children: [
       {
         path: 'manageproject',
-        element:<Manageproject></Manageproject>
+        element:<AdminRoutes><Manageproject></Manageproject></AdminRoutes>
       },
       {
         path: 'managestudent',
-        element:<Managestudent></Managestudent>
+        element:<AdminRoutes><Managestudent></Managestudent></AdminRoutes>
       },
 
     ]
